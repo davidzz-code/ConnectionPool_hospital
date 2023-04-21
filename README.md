@@ -1,4 +1,4 @@
-# Connection Pool - HospitalDB documentation
+# Connection Pool  - Hospital database
 
 This is a Java application that interacts with a MariaDB database named "hospitalDB" using the HikariCP connection pool. The application allows for CRUD (Create, Read, Update, Delete) operations on a "doctors" table in the database.
 
