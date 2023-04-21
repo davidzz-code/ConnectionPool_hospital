@@ -1,56 +1,56 @@
-# ConnectionPool_hospital
+# Connection Pool - HospitalDB documentation
 
-# Project Name
-
-The project is a Java application for managing doctor data in a database using HikariCP as the JDBC connection pool with MariaDB.
+This is a Java application that interacts with a MariaDB database named "hospitalDB" using the HikariCP connection pool. The application allows for CRUD (Create, Read, Update, Delete) operations on a "doctors" table in the database.
 
 ## Prerequisites
+To run this application, you need to have the following:
 
-- Java Development Kit (JDK) 8 or higher
-- MariaDB installed and configured on port 3306
-- HikariCP library
+- Java Development Kit (JDK) installed on your system
+- MariaDB database server installed and running on localhost
+- MariaDB JDBC driver added to your application's classpath
 
-## Configuration
+## Getting Started
+1. Clone the repository or download the source code.
+2. Import the project into your Java IDE.
+3. Update the database connection properties in the `initDatabaseConnectionPool()` method of the `Application` class. Set the appropriate values for the JDBC URL, username, and password according to your MariaDB setup.
+4. Build and run the application.
 
-1. Clone the repository.
-2. Configure the database connection details in the `initDatabaseConnectionPool()` method in the `Application` class.
-3. Compile the project with JDK.
-4. Run the `Application` class to start the application.
+## Functionality
+The `Application` class provides the following functionality:
 
-## Features
+- `createData(String name, String speciality, int age)`: Inserts a new row into the "doctors" table with the given name, speciality, and age.
+- `readData()`: Retrieves all rows from the "doctors" table and displays them on the console.
+- `updateData(String name, String newSpeciality)`: Updates the speciality of a doctor with the given name in the "doctors" table.
+- `queryData(String speciality)`: Retrieves all rows from the "doctors" table with the given speciality and displays them on the console.
+- `deleteData(String nameToDelete)`: Deletes all rows from the "doctors" table that match the given name.
 
-The application offers the following functionalities:
-
-- Create doctor data in the database.
-- Read doctor data from the database.
-- Update the specialty of a doctor in the database.
-- Query doctor data by specialty from the database.
-- Delete doctor data from the database.
+The application interacts with the user through the console, prompting for input for creating, updating, querying, and deleting doctors' data.
 
 ## Usage
+1. Run the application.
+2. Follow the prompts to perform CRUD operations on the "doctors" table in the "hospitalDB" database.
+3. View the results of the operations on the console.
 
-The application displays an interactive menu in the console that allows the user to interact with the doctor database. The menu has the following options:
+## Database Schema
+The "doctors" table in the "hospitalDB" database has the following schema:
 
-- Create doctor data: The user can enter the name, specialty, and age of a doctor to add them to the database.
-- Read doctor data: The user can view all the doctor data stored in the database, sorted by age in descending order.
-- Update doctor's specialty: The user can update the specialty of an existing doctor in the database by entering the doctor's name and the new specialty.
-- Query data by specialty: The user can query doctor data by specialty by entering the desired specialty.
-- Delete doctor data: The user can delete the data of a doctor from the database by entering the name of the doctor to be deleted.
+```sql
+CREATE TABLE doctors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    speciality VARCHAR(255) NOT NULL,
+    age INT NOT NULL
+);
+```
 
-## Contribution
+The table has four columns: id (auto-incrementing primary key), name (doctor's name), speciality (doctor's speciality), and age (doctor's age).
 
-If you wish to contribute to this project, please follow these steps:
+## Dependencies
+This application uses the following dependencies:
 
-1. Fork the repository.
-2. Create a working branch in your fork.
-3. Make your changes and commit them.
-4. Submit a pull request to the main branch of the repository.
-5. Your contribution will be reviewed and merged if accepted.
+- HikariCP: A high-performance JDBC connection pool.
+- MariaDB JDBC Driver: A JDBC driver for connecting to MariaDB databases.
+Make sure to include these dependencies in your project's classpath.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Author
-
-This project was created by [Author's Name](https://github.com/authorname).
+Conclusion
+This Java application provides basic CRUD operations on a MariaDB database using HikariCP connection pooling. It allows for creating, reading, updating, and deleting doctors' data in the "hospitalDB" database. You can customize the database connection properties and extend the functionality as needed for your specific use case.
